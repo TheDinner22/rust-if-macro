@@ -6,10 +6,12 @@ use cond_macros::my_if;
 
 fn main (){
     let mut a = 1;
-    my_if!(a==1 => {
+    my_if!(a==2 => {
       a = 111;
+    }
+    otherwise: {
+        a = 123;
     });
 
     println!("{a}");
-
 }
