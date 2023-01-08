@@ -4,7 +4,7 @@
 
 use cond_macros::my_if;
 
-fn main (){
+fn main() {
     let mut a = 1;
     my_if!(a==2 => {
       a = 111;
