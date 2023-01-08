@@ -5,11 +5,11 @@
 use cond_macros::my_if;
 
 fn main (){
-    // some syntax ideas
-    let a = 1;
-    let b = 1;
-    my_if!(a==b => {
-        /* some code here*/
+    let mut a = 1;
+    my_if!(a==1 => {
+      a = 111;
     });
+
+    println!("{a}");
 
 }
