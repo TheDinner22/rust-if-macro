@@ -2,7 +2,7 @@
 //
 // remember that the goal is to remake the if, else, and else if keywords using MBE macros
 
-use cond_macros::my_if;
+use cond_macros::*;
 
 fn main() {
     let mut a = 1;
