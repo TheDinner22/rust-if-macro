@@ -1,7 +1,11 @@
 #[macro_export]
 macro_rules! my_if {
     ($bool:expr => $code:block) => {
-        println!("{:#?}", $bool);
+        match $bool {
+            true => {$code},
+            false => {/* cond was false, ignoring input */},
+            _ => panic!("expected bool, got {:#?}", stringify!($bool))
+        }
     };
 }
 
