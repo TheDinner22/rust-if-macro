@@ -1,19 +1,11 @@
 #[macro_export]
-macro_rules! my_if {
-    ($bool:expr => $code:block) => {
-        match $bool {
-            true => {$code},
-            false => {/* cond was false, ignoring input */},
-            _ => panic!("expected bool, got {:#?}", stringify!($bool))
-        }
-    };
-    
-    ($bool:expr => $if_code:block otherwise: $else_code:block) => {
-        match $bool {
-            true => {$if_code},
-            false => {$else_code},
-            _ => panic!("expected bool, got {:#?}", stringify!($bool))
-        }
-    };
+macro_rules! count_expr {
+    () => {0};
+    ($e:expr) => {1};
+   ($first:expr, $($tail:expr),*) => {1 + count_expr!($($tail),*)}
 }
 
+#[macro_export]
+macro_rules! my_if {
+    ($if_bool:expr => $if_code:block $(elif $elif_bool:expr => $elif_code:block)* $(otherwise => $else_code:block)?) => {};
+}
