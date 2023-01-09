@@ -5,7 +5,6 @@
 use cond_macros::my_if;
 
 fn main() {
-    let a = 1;
     my_if!(a==1 => {
       a = 111;
     }
@@ -18,6 +17,27 @@ fn main() {
     otherwise => {
         a = 123;
     });
+
+    // i want this expansion to look like
+    let mut a = 1;
+    {
+        match a == 1 {
+            true => {
+                a = 111;
+            }
+            false => match a == 2 {
+                true => {
+                    a = 222;
+                }
+                false => match a == 3 {
+                    true => {
+                        a = 333;
+                    }
+                    false => a = 123,
+                },
+            },
+        }
+    }
 
     println!("{a}");
 }
