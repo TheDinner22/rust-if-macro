@@ -5,8 +5,6 @@
 use cond_macros::*;
 
 fn main() {
-    let mut a = 1;
-
     my_if!(a==1 => {
       a = 111;
     }
@@ -20,5 +18,28 @@ fn main() {
         a = 123;
     });
 
+    // i would like this macro to expand to
+    {
+        const CHAIN_LEN: usize = (2) + 2; // todo make dyn
+
+        struct IfChain {
+            len: usize,
+            completed: usize,
+        }
+
+        impl Iterator for IfChain {
+            type Item = bool;
+
+            fn next(&mut self) -> Option<Self::Item> {
+                if self.completed == self.len {
+                    None
+                } // todo change if to match later
+
+                // todo idk what i am doing and am going to try another approach
+            }
+        }
+    }
+
+    let a = 1;
     println!("{a}");
 }
