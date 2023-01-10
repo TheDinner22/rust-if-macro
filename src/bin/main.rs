@@ -5,13 +5,16 @@
 use cond_macros::*;
 
 fn main() {
-    let mut a = 4;
+    let mut a = 3;
 
     my_if!(elif a==1 => {
       a = 111;
     }
     elif a==2 => {
         a = 222;
+    }
+    elif a==3 => {
+        a = 333;
     }
     elif a==3 => {
         a = 333;
